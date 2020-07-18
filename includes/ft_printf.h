@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:44:57 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/16 19:52:19 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/18 16:18:04 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# define FLG_NONE  0b00000000
+# define FLG_MINUS 0b00000001
+# define FLG_PLUS  0b00000010
+# define FLG_SPACE 0b00000100
+# define FLG_HASH  0b00001000
+# define FLG_ZERO  0b00010000
 
 typedef struct		s_struct
 {
