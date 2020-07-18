@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 16:59:03 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/18 18:17:28 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,19 @@ va_end
 
 #include "ft_printf.h"
 
-int		ft_print_line(char **line)
+int		ft_print_line(const char **line)
 {
+	int len;
+
+	len = 0;
 	if (!*line)
 		return (0);
-	while (*line[len] && *line[len] != '%')
-		write(1, *(line) + len++, 1);
-	*line += len;
+	while (**line && **line != '%')
+	{
+		write(1, *line, 1);
+		*line += 1;
+		len++;
+	}
 	return (len);
 }
 

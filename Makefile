@@ -6,29 +6,44 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/16 20:03:33 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/18 18:12:07 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.o
-
-SRC = ft_printf.c main.c
-
+NAME = libftprintf.a
+SRC =	base/ft_printf.c \
+		parser/ft_parser.c \
+		parser/ft_flags_parse.c
+OBJ = $(patsubst %.c,%.o,$(SRC))
+LIBFT = libft/libft.a
 HEADERS = ft_printf.h
-
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I includes -I libft -g
 
-all: $(NAME)
+.PHONY: all clean fclean re
 
-$(NAME): $(SRC)
-	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
+all: libft/libft.a $(NAME)
+
+libft/libft.a:
+	make all -C libft
+
+test: $(OBJ)
+	$(CC) $(CFLAGS) main.c libftprintf.a -o test
+
+$(NAME): $(OBJ)
+	cp libft/libft.a $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "clean"
+	make clean -C libft
+	/bin/rm -rf $(OBJ)
 
 fclean: clean
-	@/bin/rm -rf $(NAME)
-	@echo "$(NAME) removed"
+	make fclean -C libft
+	/bin/rm -rf $(NAME)
 
 re: fclean all

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/04/30 04:29:04 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/09 18:23:51 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+** The strlen() function calculates the length of the string pointed to by
+** s, excluding the terminating null byte ('\0').
+**
+** const char *s - string
+**
+** The strlen() function returns the number of bytes in the string pointed
+** to by s.
+*/
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int			len;
+	size_t len;
 
 	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
+	while (s[len])
+		len++;
 	return (len);
 }

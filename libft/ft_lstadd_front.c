@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/05/04 19:23:35 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/04 19:32:35 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+** Adds the element ’new’ at the beginning of the
+** list.
+**
+** t_list **lst - The address of a pointer to the first link of
+** a list.
+** t_list *new - The address of a pointer to the element to be
+** added to the list.
+*/
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int			len;
-
-	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
-	return (len);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

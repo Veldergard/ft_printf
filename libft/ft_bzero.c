@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/04/29 21:23:10 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/01 17:01:13 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+** The ft_bzero() function erases the data in the n bytes of the memory
+** starting at the location pointed to by s, by writing zeros (bytes con‐
+** taining '\0') to that area.
+**
+** void *s - memory area
+** size_t n - number of bytes to fill
+**
+** return value - None.
+*/
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	int			len;
-
-	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
-	return (len);
+	ft_memset(s, 0, n);
 }

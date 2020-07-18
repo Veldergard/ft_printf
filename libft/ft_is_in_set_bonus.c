@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_is_in_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/05/03 16:51:47 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/03 16:52:40 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+char	ft_is_in_set(char const c, char const *set)
 {
-	int			len;
+	size_t i;
 
-	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
-	return (len);
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/05/04 19:33:05 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/04 19:50:52 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+** Returns the last element of the list.
+**
+** t_list *lst - The beginning of the list.
+**
+** Last element of the list.
+*/
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	int			len;
-
-	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
-	return (len);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

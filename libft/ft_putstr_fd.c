@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:02:36 by olaurine         ###   ########.fr       */
+/*   Created: 2020/05/04 01:16:10 by olaurine          #+#    #+#             */
+/*   Updated: 2020/05/04 01:18:14 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+** Outputs the string ’s’ to the given file
+** descriptor.
+**
+** #1. The string to output.
+** #2. The file descriptor on which to write.
+*/
 
-int		ft_parser(const char **format, va_list *va, t_struct *t_s)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	int			len;
+	size_t len;
 
-	len = 0;
-	if (!*format)
-		return (0);
-	t_s->length = 0;
-	// ft_flags_parse(format, t_s);
-	(void) va;
-	// ft_width_parse(format, va, t_s);
-	// ft_precision_parse(format, va, t_s);
-	// ft_type_parse(format, va, t_s);
-	return (len);
+	if (!s)
+		return ;
+	len = ft_strlen(s);
+	write(fd, s, len);
 }
