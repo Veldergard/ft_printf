@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 19:56:51 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 17:57:55 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/20 01:29:01 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		main (void)
 {
-	ft_printf("govno");
+	ft_printf("govno\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/18 18:17:28 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/20 01:33:34 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ int		ft_print_line(const char **line)
 	return (len);
 }
 
+void t_s_init(t_struct *t_s)
+{
+	t_s->flags = 0;
+	t_s->width = 0;
+	t_s->precision = 0;
+	t_s->type = 0;
+	t_s->length = 0;
+}
+
 int		ft_vprintf(const char *format, va_list *va)
 {
 	int result;
@@ -51,6 +60,7 @@ int		ft_vprintf(const char *format, va_list *va)
 			break;
 		if (!(t_s = malloc(sizeof(t_struct))))
 			return (-1);
+		t_s_init(t_s);
 		ft_parser(&format, va, t_s);
 		free(t_s);
 	}
