@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/20 01:56:23 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:14:19 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int		ft_print_line(const char **line)
 	int len;
 
 	len = 0;
-	if (!*line)
-		return (0);
 	while (**line && **line != '%')
 	{
 		write(1, *line, 1);
@@ -38,7 +36,7 @@ int		ft_print_line(const char **line)
 	return (len);
 }
 
-void t_s_init(t_struct *t_s)
+void t_s_clear(t_struct *t_s)
 {
 	t_s->flags = 0;
 	t_s->width = 0;
@@ -49,22 +47,30 @@ void t_s_init(t_struct *t_s)
 
 int		ft_vprintf(const char *format, va_list *va)
 {
-	int result;
-	t_struct *t_s;
+	int			result;
+	int			res_sum;
+	t_struct	*t_s;
 
 	result = 0;
+	res_sum = 0;
+	if (!(t_s = malloc(sizeof(t_struct))))
+		return (-1);
 	while (*format)
 	{
-		result += ft_print_line(&format);
+		res_sum += ft_print_line(&format);
 		if (!*format)
 			break;
-		if (!(t_s = malloc(sizeof(t_struct))))
+		t_s_clear(t_s);
+		if (!ft_parser(&format, va, t_s))
+		{
+			free(t_s);
 			return (-1);
-		t_s_init(t_s);
-		ft_parser(&format, va, t_s);
-		free(t_s);
+		}
+		ft_processor(va, t_s);
+		res_sum += t_s->length;
 	}
-	return (result);
+	free(t_s);
+	return (res_sum);
 }
 
 int		ft_printf(const char *format, ...)

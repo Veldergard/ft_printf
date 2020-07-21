@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 02:46:53 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/19 03:33:21 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:11:03 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	ft_flags_parse(const char **line, t_struct *t_s)
 		else
 			break;
 		(*line)++;
-		t_s->length += 1;
 	}
 }
