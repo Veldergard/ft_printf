@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 13:14:19 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:20:19 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,14 @@ void t_s_clear(t_struct *t_s)
 int		ft_vprintf(const char *format, va_list *va)
 {
 	int			result;
-	int			res_sum;
 	t_struct	*t_s;
 
 	result = 0;
-	res_sum = 0;
 	if (!(t_s = malloc(sizeof(t_struct))))
 		return (-1);
 	while (*format)
 	{
-		res_sum += ft_print_line(&format);
+		result += ft_print_line(&format);
 		if (!*format)
 			break;
 		t_s_clear(t_s);
@@ -67,10 +65,10 @@ int		ft_vprintf(const char *format, va_list *va)
 			return (-1);
 		}
 		ft_processor(va, t_s);
-		res_sum += t_s->length;
+		result += t_s->length;
 	}
 	free(t_s);
-	return (res_sum);
+	return (result);
 }
 
 int		ft_printf(const char *format, ...)

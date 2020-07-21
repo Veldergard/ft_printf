@@ -6,14 +6,16 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 19:56:51 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/20 01:53:22 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:21:48 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int		main (void)
 {
-	ft_printf("govno\n%24s");
+	ft_printf("govno\n%-24c\n", 'l');
+	printf("govno\n%-24c\n", 'l');
 	return (0);
 }

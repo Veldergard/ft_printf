@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:44:57 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/20 01:50:54 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:19:26 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ typedef struct		s_struct
 
 int		ft_printf(const char *format, ...);
 int		ft_parser(const char **format, va_list *va, t_struct *t_s);
-void	ft_flags_parse(const char **format, t_struct *t_s);
-void	ft_width_parse(const char **line, va_list *va, t_struct *t_s);
-void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s);
-int		ft_type_parse(const char **line, t_struct *t_s);
+void	ft_processor(va_list *va, t_struct *t_s);
+void	ft_pf_char(va_list *va, t_struct *t_s);
 
 #endif

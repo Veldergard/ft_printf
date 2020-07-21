@@ -6,13 +6,13 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 13:49:01 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:29:39 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_type_parse(const char **line, t_struct *t_s)
+static int		ft_type_parse(const char **line, t_struct *t_s)
 {
 	if (!ft_strchr("cspdiuxX%", **line))
 		return (0);
@@ -21,7 +21,7 @@ int		ft_type_parse(const char **line, t_struct *t_s)
 	return(1);
 }
 
-void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s)
+static void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s)
 {
 	if (**line != '.')
 		return ;
@@ -36,7 +36,7 @@ void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s)
 	}
 }
 
-void	ft_width_parse(const char **line, va_list *va, t_struct *t_s)
+static void	ft_width_parse(const char **line, va_list *va, t_struct *t_s)
 {
 	if ((**line < '0' || **line > '9') && **line != '*')
 		return ;
@@ -50,7 +50,7 @@ void	ft_width_parse(const char **line, va_list *va, t_struct *t_s)
 	}
 }
 
-void	ft_flags_parse(const char **line, t_struct *t_s)
+static void	ft_flags_parse(const char **line, t_struct *t_s)
 {
 	t_s->flags = FLG_NONE;
 	while (**line)

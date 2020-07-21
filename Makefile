@@ -6,13 +6,15 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/21 13:49:35 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/21 16:23:48 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRC =	base/ft_printf.c \
 		base/ft_parser.c \
+		processor/ft_processor.c \
+		processor/ft_pf_char.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
 LIBFT = libft/libft.a
 HEADERS = ft_printf.h
