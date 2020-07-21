@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:44:57 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 16:19:26 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:31:10 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int		ft_printf(const char *format, ...);
 int		ft_parser(const char **format, va_list *va, t_struct *t_s);
 void	ft_processor(va_list *va, t_struct *t_s);
 void	ft_pf_char(va_list *va, t_struct *t_s);
+void	ft_pf_string(va_list *va, t_struct *t_s);
+void	ft_pf_pointer(va_list *va, t_struct *t_s);
 
 #endif
