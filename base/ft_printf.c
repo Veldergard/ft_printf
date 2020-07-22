@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 16:20:19 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 19:56:13 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ va_end
 
 #include "ft_printf.h"
 
-int		ft_print_line(const char **line)
+static int	ft_print_line(const char **line)
 {
 	int len;
 
@@ -36,16 +36,17 @@ int		ft_print_line(const char **line)
 	return (len);
 }
 
-void t_s_clear(t_struct *t_s)
+static void	t_s_clear(t_struct *t_s)
 {
 	t_s->flags = 0;
 	t_s->width = 0;
+	t_s->dot = 0;
 	t_s->precision = 0;
 	t_s->type = 0;
 	t_s->length = 0;
 }
 
-int		ft_vprintf(const char *format, va_list *va)
+static int	ft_vprintf(const char *format, va_list *va)
 {
 	int			result;
 	t_struct	*t_s;
@@ -71,7 +72,7 @@ int		ft_vprintf(const char *format, va_list *va)
 	return (result);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list		va;
 	int			result;

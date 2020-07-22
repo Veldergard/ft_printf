@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 18:03:32 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:26:55 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s)
 	}
 	if (t_s->precision < 0)
 		t_s->precision = 0;
+	t_s->dot = 1;
 }
 
 static void	ft_width_parse(const char **line, va_list *va, t_struct *t_s)
