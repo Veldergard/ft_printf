@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:47:49 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 19:01:23 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:35:10 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_pf_char(unsigned char c, t_struct *t_s)
 {
-	unsigned char	c;
 	unsigned int	i;
 
 	i = 1;
