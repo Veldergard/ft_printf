@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/22 18:48:45 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:12:44 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	ft_pf_int_minus(long long int num, int len, t_struct *t_s)
 		while (len < t_s->precision)
 		{
 			write(1, "0", 1);
+			len++;
 		}
 	}
 	ft_putnbr_fd(num, 1);
