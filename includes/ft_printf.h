@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:44:57 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/22 19:14:04 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/22 22:21:43 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ int		ft_printf(const char *format, ...);
 int		ft_parser(const char **format, va_list *va, t_struct *t_s);
 void	ft_putnbr_base(long long int n, char base,
 						char is_up_case, char print_sign);
-int		num_len(long long int n);
+int		num_len_base(long long int n, char base);
 void	ft_processor(va_list *va, t_struct *t_s);
 void	ft_pf_char(unsigned char c, t_struct *t_s);
 void	ft_pf_string(va_list *va, t_struct *t_s);
 void	ft_pf_pointer(va_list *va, t_struct *t_s);
 void	ft_pf_int(va_list *va, t_struct *t_s);
 void	ft_pf_uns_int(va_list *va, t_struct *t_s);
+void	ft_pf_x(va_list *va, t_struct *t_s);
 
 #endif

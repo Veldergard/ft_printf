@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 11:35:40 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/22 18:50:46 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:45:33 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_processor(va_list *va, t_struct *t_s)
 	// 	ft_pf_pointer(va, t_s);
 	else if (t_s->type == 'd' || t_s->type == 'i')
 		ft_pf_int(va, t_s);
-	// else if (t_s->type == 'x' || t_s->type == 'X')
-	// 	ft_pf_uns_x(va, t_s);
+	else if (t_s->type == 'x' || t_s->type == 'X')
+		ft_pf_x(va, t_s);
 	else if (t_s->type == 'u')
 		ft_pf_uns_int(va, t_s);
 	else if (t_s->type == '%')

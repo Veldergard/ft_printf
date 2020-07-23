@@ -6,7 +6,7 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/22 19:02:50 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/23 15:45:13 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC =	base/ft_printf.c \
 		processor/ft_pf_char.c \
 		processor/ft_pf_string.c \
 		processor/ft_pf_pointer.c \
-		processor/ft_pf_int.c
+		processor/ft_pf_int.c \
+		processor/ft_pf_x.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
 LIBFT = libft/libft.a
 HEADERS = includes/ft_printf.h
