@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 19:56:51 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/22 19:10:27 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:37:01 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int		main (void)
 	fflush(stdout);
 	ft_printf("%010.5d\n", 1241234124);
 	printf("%010.5d\n", 1241234124);
+	fflush(stdout);
+	// ft_printf("%05\n");
+	printf("%05\n");
 	fflush(stdout);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/23 15:36:58 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:28:27 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ static void	ft_pf_int_without_flags(long long int num, int len, t_struct *t_s)
 	{
 		write(1, " ", 1);
 		t_s->width--;
+	}
+	if (num < 0)
+	{
+		num *= -1;
+		ft_putchar_fd('-', 1);
 	}
 	while (len++ < t_s->precision)
 		write(1, "0", 1);
