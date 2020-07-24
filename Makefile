@@ -6,20 +6,20 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/24 15:57:30 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/24 21:03:35 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC =	base/ft_printf.c \
-		base/ft_parser.c \
-		base/ft_pf_utils.c \
-		processor/ft_processor.c \
-		processor/ft_pf_char.c \
-		processor/ft_pf_string.c \
-		processor/ft_pf_pointer.c \
-		processor/ft_pf_int.c \
-		processor/ft_pf_x.c
+SRC =	src/ft_printf.c \
+		src/ft_parser.c \
+		src/ft_pf_utils.c \
+		src/ft_processor.c \
+		src/ft_pf_char.c \
+		src/ft_pf_string.c \
+		src/ft_pf_pointer.c \
+		src/ft_pf_int.c \
+		src/ft_pf_x.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
 LIBFT = libft/libft.a
 HEADERS = includes/ft_printf.h
