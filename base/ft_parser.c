@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 23:04:19 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 15:09:19 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:23:11 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static int		ft_type_parse(const char **line, t_struct *t_s, int *cur)
 static void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s, int *cur)
 {
 	if ((*line)[*cur] != '.')
+	{
+		t_s->precision = 1;
 		return ;
+	}
 	(*cur)++;
 	if ((*line)[*cur] == '*')
 	{
@@ -37,9 +40,12 @@ static void	ft_precision_parse(const char **line, va_list *va, t_struct *t_s, in
 		while((*line)[*cur] >= '0' && (*line)[*cur] <= '9')
 			(*cur)++;
 	}
-	if (t_s->precision < 0)
-		t_s->precision = 0;
 	t_s->dot = 1;
+	if (t_s->precision < 0)
+	{
+		t_s->dot = 0;
+		t_s->precision = 1;
+	}
 }
 
 static void	ft_width_parse(const char **line, va_list *va, t_struct *t_s, int *cur)

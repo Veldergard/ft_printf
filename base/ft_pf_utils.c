@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 14:56:39 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 01:37:29 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:54:33 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_putnbr_base(long long int n, char base,
 	}
 }
 
-int	num_len_base(long long int n, char base)
+int	num_len_base(long long int n, char base, int *sign)
 {
 	int				len;
 
@@ -44,7 +44,7 @@ int	num_len_base(long long int n, char base)
 	if (n < 0)
 	{
 		n *= -1;
-		len++;
+		(*sign)++;
 		if (n < 0)
 			n -= 1;
 	}

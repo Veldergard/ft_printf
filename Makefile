@@ -6,7 +6,7 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/23 15:47:10 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/24 15:57:30 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,8 @@ test: $(OBJ)
 	$(CC) -I includes -I libft -g main.c libftprintf.a -o test
 
 $(NAME): $(OBJ)
-	cp libft/libft.a $(NAME)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@[ -f $@ ] || cp libft/libft.a $(NAME)
+	ar rcs $(NAME) $?
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
