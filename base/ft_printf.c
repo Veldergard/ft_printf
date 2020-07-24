@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 14:54:52 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:09:31 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	ft_vprintf(const char *format, va_list *va)
 			continue;
 		}
 		format += cur;
+		// printf("<<%d; %d; %d; %c; %s>>\n", t_s->flags, t_s->width, t_s->precision, t_s->type, format);
 		ft_processor(va, t_s);
 		result += t_s->length;
 	}
