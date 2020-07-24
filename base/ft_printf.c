@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 14:21:13 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:33:18 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_vprintf(const char **format, va_list *va)
 	t_struct	*t_s;
 
 	result = 0;
-	if (!(t_s = malloc(sizeof(t_struct))))
+	if (!(t_s = malloc(sizeof(t_struct))) || !(*format))
 		return (-1);
 	while (**format)
 	{
@@ -72,6 +72,7 @@ static int	ft_vprintf(const char **format, va_list *va)
 			result += 1;
 			continue;
 		}
+		(*format) += cur;
 		ft_processor(va, t_s);
 		result += t_s->length;
 	}
