@@ -6,9 +6,11 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 22:02:31 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/23 15:44:46 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 01:45:51 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 static void	ft_pf_x_minus(long long int num, int len, t_struct *t_s)
 {
@@ -27,11 +29,6 @@ static void	ft_pf_x_minus(long long int num, int len, t_struct *t_s)
 
 static void	ft_pf_x_zero(long long int num, int len, t_struct *t_s)
 {
-	if (num < 0)
-	{
-		num *= -1;
-		ft_putchar_fd('-', 1);
-	}
 	while ((unsigned int) len++ < t_s->length)
 		write(1, "0", 1);
 	ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
@@ -67,9 +64,9 @@ void		ft_pf_x(va_list *va, t_struct *t_s)
 	else
 		t_s->length = len;
 	if (t_s->flags & FLG_MINUS)
-		ft_pf_int_minus(num, len, t_s);
+		ft_pf_x_minus(num, len, t_s);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)
-		ft_pf_int_zero(num, len, t_s);
+		ft_pf_x_zero(num, len, t_s);
 	else
-		ft_pf_int_without_flags(num, len, t_s);
+		ft_pf_x_without_flags(num, len, t_s);
 }
