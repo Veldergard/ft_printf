@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 14:33:18 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:54:52 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,23 @@ static int	ft_print_line(const char **line)
 	return (len);
 }
 
-static void	t_s_clear(t_struct *t_s)
-{
-	t_s->flags = 0;
-	t_s->width = 0;
-	t_s->dot = 0;
-	t_s->precision = 0;
-	t_s->type = 0;
-	t_s->length = 0;
-}
-
-static int	ft_vprintf(const char **format, va_list *va)
+static int	ft_vprintf(const char *format, va_list *va)
 {
 	int			cur;
 	int			result;
 	t_struct	*t_s;
 
 	result = 0;
-	if (!(t_s = malloc(sizeof(t_struct))) || !(*format))
+	if (!(t_s = malloc(sizeof(t_struct))) || !(format))
 		return (-1);
-	while (**format)
+	while (*format)
 	{
-		result += ft_print_line(format);
-		if (!**format)
+		result += ft_print_line(&format);
+		if (!*format)
 			break;
-		t_s_clear(t_s);
+		ft_bzero(t_s, sizeof(t_struct));
 		cur = 1;
-		if (!ft_parser(format, va, t_s, &cur))
+		if (!ft_parser(&format, va, t_s, &cur))
 		{
 			free(t_s);
 			return (-1);
@@ -72,7 +62,7 @@ static int	ft_vprintf(const char **format, va_list *va)
 			result += 1;
 			continue;
 		}
-		(*format) += cur;
+		format += cur;
 		ft_processor(va, t_s);
 		result += t_s->length;
 	}
@@ -88,7 +78,7 @@ int			ft_printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(va, format);
-	result = ft_vprintf(&format, &va);
+	result = ft_vprintf(format, &va);
 	va_end(va);
 	return (result);
 }
