@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 16:25:51 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/25 18:41:03 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void		ft_pf_int(va_list *va, t_struct *t_s)
 		t_s->length = (unsigned int) t_s->precision;
 	else
 		t_s->length = len + sign;
+	if (t_s->precision == 0 && !num)
+		len = 0;
 	if (t_s->flags & FLG_MINUS)
 		ft_pf_int_minus(num, len, t_s, sign);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)
