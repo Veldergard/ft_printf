@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/25 18:41:03 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/26 15:16:07 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	ft_pf_int_minus(long long int num, int len, t_struct *t_s, int sign)
 		ft_putnbr_base(num, 10, 0, 1);
 	while ((unsigned int) len + sign < t_s->length)
 	{
-		len++;
 		write(1, " ", 1);
+		len++;
 	}
 }
 
@@ -64,9 +64,10 @@ static void	ft_pf_int_without_flags(long long int num, int len, t_struct *t_s, i
 		num *= -1;
 		ft_putchar_fd('-', 1);
 	}
-	while (len++ < t_s->precision)
+	while (len < t_s->precision)
 	{
 		write(1, "0", 1);
+		len++;
 	}
 	if (t_s->precision != 0 || num != 0)
 		ft_putnbr_base(num, 10, 0, 1);
@@ -106,9 +107,7 @@ void		ft_pf_uns_int(va_list *va, t_struct *t_s)
 
 	num = (long long int) va_arg(*va, unsigned int);
 	len = num_len_base(num, 10, NULL);
-	if (t_s->dot == 0)
-		t_s->precision = 1;
-	if (len > t_s->precision)
+	if (len > t_s->precision && num)
 		t_s->precision = len;
 	if (t_s->width >= len && t_s->width >= t_s->precision)
 		t_s->length = (unsigned int) t_s->width;
@@ -116,6 +115,8 @@ void		ft_pf_uns_int(va_list *va, t_struct *t_s)
 		t_s->length = (unsigned int) t_s->precision;
 	else
 		t_s->length = len;
+	if (t_s->precision == 0 && !num)
+		len = 0;
 	if (t_s->flags & FLG_MINUS)
 		ft_pf_int_minus(num, len, t_s, 0);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)

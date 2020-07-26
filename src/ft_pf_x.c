@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 22:02:31 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 15:54:29 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/26 15:18:19 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,24 @@ static void	ft_pf_x_minus(long long int num, int len, t_struct *t_s)
 			len++;
 		}
 	}
-	ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
-	while ((unsigned int) len++ < t_s->length)
+	if (t_s->precision != 0 || num != 0)
+		ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
+	while ((unsigned int) len < t_s->length)
+	{
 		write(1, " ", 1);
+		len++;
+	}
 }
 
 static void	ft_pf_x_zero(long long int num, int len, t_struct *t_s)
 {
-	while ((unsigned int) len++ < t_s->length)
+	while ((unsigned int) len < t_s->length)
+	{
 		write(1, "0", 1);
-	ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
+		len++;
+	}
+	if (t_s->precision != 0 || num != 0)
+		ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
 }
 
 static void	ft_pf_x_without_flags(long long int num, int len, t_struct *t_s)
@@ -41,9 +49,13 @@ static void	ft_pf_x_without_flags(long long int num, int len, t_struct *t_s)
 		write(1, " ", 1);
 		t_s->width--;
 	}
-	while (len++ < t_s->precision)
+	while (len < t_s->precision)
+	{
 		write(1, "0", 1);
-	ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
+		len++;
+	}
+	if (t_s->precision != 0 || num != 0)
+		ft_putnbr_base(num, 16, t_s->type == 'x' ? 0 : 1, 0);
 }
 
 void		ft_pf_x(va_list *va, t_struct *t_s)
@@ -53,9 +65,7 @@ void		ft_pf_x(va_list *va, t_struct *t_s)
 
 	num = (long long int) va_arg(*va, unsigned int);
 	len = num_len_base(num, 16, NULL);
-	if (t_s->dot == 0)
-		t_s->precision = 1;
-	if (len > t_s->precision)
+	if (len > t_s->precision && num)
 		t_s->precision = len;
 	if (t_s->width >= len && t_s->width >= t_s->precision)
 		t_s->length = (unsigned int) t_s->width;
@@ -63,6 +73,8 @@ void		ft_pf_x(va_list *va, t_struct *t_s)
 		t_s->length = (unsigned int) t_s->precision;
 	else
 		t_s->length = len;
+	if (t_s->precision == 0 && !num)
+		len = 0;
 	if (t_s->flags & FLG_MINUS)
 		ft_pf_x_minus(num, len, t_s);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)
