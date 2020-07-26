@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 22:02:31 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/26 16:46:06 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/26 23:39:25 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void		ft_pf_x(va_list *va, t_struct *t_s)
 	len = num_len_base(num, 16, NULL);
 	if (len > t_s->precision && num)
 		t_s->precision = len;
+	if (!t_s->precision && !num)
+		len = 0;
 	if (t_s->width >= len && t_s->width >= t_s->precision)
 		t_s->length = (unsigned int) t_s->width;
 	else if (t_s->precision >= t_s->width && t_s->precision >= len)
 		t_s->length = (unsigned int) t_s->precision;
 	else
 		t_s->length = len;
-	if (t_s->precision == 0 && !num)
-		len = 0;
 	if (t_s->flags & FLG_MINUS)
 		ft_pf_x_minus(num, len, t_s);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)

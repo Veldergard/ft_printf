@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:30:51 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/26 16:56:14 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/26 23:40:59 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ void	ft_pf_pointer(va_list *va, t_struct *t_s)
 	len = uns_num_len_base(pointer, 16) + 2;
 	if (len > t_s->precision && pointer)
 		t_s->precision = len;
+	if (!t_s->precision && !pointer)
+		len = 0;
 	if (t_s->width >= len && t_s->width >= t_s->precision)
 		t_s->length = (unsigned int) t_s->width;
 	else if (t_s->precision >= t_s->width && t_s->precision >= len)
 		t_s->length = (unsigned int) t_s->precision;
 	else
 		t_s->length = len;
-	if (t_s->precision == 0 && !pointer)
-		len = 0;
 	if (t_s->flags & FLG_MINUS)
 		ft_pf_int_minus(pointer, len, t_s);
 	else if (t_s->flags & FLG_ZERO && !t_s->dot)
