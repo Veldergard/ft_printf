@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/26 15:16:07 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/26 16:48:31 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ static void	ft_pf_int_minus(long long int num, int len, t_struct *t_s, int sign)
 		num = -num;
 		ft_putchar_fd('-', 1);
 	}
-	if (len < t_s->precision)
+	while (len < t_s->precision)
 	{
-		while (len < t_s->precision)
-		{
-			write(1, "0", 1);
-			len++;
-		}
+		write(1, "0", 1);
+		len++;
 	}
 	if (t_s->precision != 0 || num != 0)
 		ft_putnbr_base(num, 10, 0, 1);
