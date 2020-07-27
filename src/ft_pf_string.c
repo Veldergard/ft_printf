@@ -6,13 +6,13 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:28:33 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/21 20:29:44 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 17:24:29 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_pf_string(va_list *va, t_struct *t_s)
+void		ft_pf_string(va_list *va, t_struct *t_s)
 {
 	char			*s;
 	unsigned int	len;
