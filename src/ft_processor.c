@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 11:35:40 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/23 15:46:42 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 21:36:16 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_processor(va_list *va, t_struct *t_s)
 {
 	if (t_s->type == 'c')
-		ft_pf_char((unsigned char) va_arg(*va, int), t_s);
+		ft_pf_char((unsigned char)va_arg(*va, int), t_s);
 	else if (t_s->type == 's')
 		ft_pf_string(va, t_s);
 	else if (t_s->type == 'p')
@@ -27,5 +27,5 @@ void	ft_processor(va_list *va, t_struct *t_s)
 	else if (t_s->type == 'u')
 		ft_pf_uns_int(va, t_s);
 	else if (t_s->type == '%')
-		ft_pf_char((unsigned char) '%', t_s);
+		ft_pf_char((unsigned char)'%', t_s);
 }

@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:47:49 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/22 18:35:10 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 21:38:43 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_pf_char(unsigned char c, t_struct *t_s)
 
 	i = 1;
 	if (t_s->width > 1)
-		t_s->length = (unsigned int) t_s->width;
+		t_s->length = (unsigned int)t_s->width;
 	else
 		t_s->length = 1;
 	if (t_s->flags & FLG_MINUS)

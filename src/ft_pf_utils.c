@@ -6,16 +6,16 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 14:56:39 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 15:54:33 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 21:35:52 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 void	ft_putnbr_base(long long int n, char base,
-						char is_up_case, char print_sign)
+			char is_up_case, char print_sign)
 {
-	char *alpha;
+	char	*alpha;
 
 	if (base < 2 || base > 16)
 		return ;
@@ -34,9 +34,9 @@ void	ft_putnbr_base(long long int n, char base,
 	}
 }
 
-int	num_len_base(long long int n, char base, int *sign)
+int		num_len_base(long long int n, char base, int *sign)
 {
-	int				len;
+	int		len;
 
 	if (n == 0)
 		return (1);
@@ -57,7 +57,7 @@ int	num_len_base(long long int n, char base, int *sign)
 }
 
 void	ft_put_uns_nbr_base(size_t n, char base,
-						char is_up_case, char print_sign)
+			char is_up_case, char print_sign)
 {
 	char *alpha;
 
@@ -75,9 +75,9 @@ void	ft_put_uns_nbr_base(size_t n, char base,
 	}
 }
 
-int	uns_num_len_base(size_t n, char base)
+int		uns_num_len_base(size_t n, char base)
 {
-	int				len;
+	int		len;
 
 	if (n == 0)
 		return (1);

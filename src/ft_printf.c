@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/27 20:01:21 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 21:24:08 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ static int	ft_print_line(const char **line)
 	return (len);
 }
 
+static int	ft_free_and_return(t_struct *t_s, int return_val)
+{
+	free(t_s);
+	return (return_val);
+}
+
 static int	ft_vprintf(const char *format, va_list *va)
 {
 	int			cur;
@@ -39,25 +45,18 @@ static int	ft_vprintf(const char *format, va_list *va)
 	{
 		result += ft_print_line(&format);
 		if (!*format)
-			break;
+			break ;
 		ft_bzero(t_s, sizeof(t_struct));
 		cur = 1;
 		if (!ft_parser(&format, va, t_s, &cur))
-		{
-			free(t_s);
-			return (-1);
-		}
-		if (cur == 0)
-		{
-			result += 1;
-			continue;
-		}
+			return (ft_free_and_return(t_s, -1));
+		if (cur == 0 && ++result)
+			continue ;
 		format += cur;
 		ft_processor(va, t_s);
 		result += t_s->length;
 	}
-	free(t_s);
-	return (result);
+	return (ft_free_and_return(t_s, result));
 }
 
 int			ft_printf(const char *format, ...)

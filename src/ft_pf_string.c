@@ -6,27 +6,16 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:28:33 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/27 17:24:29 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 21:34:59 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_pf_string(va_list *va, t_struct *t_s)
+static void	ft_print_str(char *s, unsigned int len, t_struct *t_s)
 {
-	char			*s;
-	unsigned int	len;
-	unsigned int	i;
+	unsigned int i;
 
-	if (!(s = va_arg(*va, char*)))
-		s = "(null)";
-	len = ft_strlen(s);
-	if ((unsigned int) t_s->precision < len && t_s->dot)
-		len = (unsigned int) t_s->precision;
-	if ((unsigned int) t_s->width > len)
-		t_s->length = (unsigned int) t_s->width;
-	else
-		t_s->length = len;
 	i = len;
 	if (t_s->flags & FLG_MINUS)
 	{
@@ -42,3 +31,19 @@ void		ft_pf_string(va_list *va, t_struct *t_s)
 	}
 }
 
+void		ft_pf_string(va_list *va, t_struct *t_s)
+{
+	char			*s;
+	unsigned int	len;
+
+	if (!(s = va_arg(*va, char*)))
+		s = "(null)";
+	len = ft_strlen(s);
+	if ((unsigned int)t_s->precision < len && t_s->dot)
+		len = (unsigned int)t_s->precision;
+	if ((unsigned int)t_s->width > len)
+		t_s->length = (unsigned int)t_s->width;
+	else
+		t_s->length = len;
+	ft_print_str(s, len, t_s);
+}
