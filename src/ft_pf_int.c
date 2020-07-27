@@ -6,7 +6,7 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 18:57:46 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/27 00:35:38 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:56:05 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void		ft_pf_int(va_list *va, t_struct *t_s)
 		t_s->precision = len;
 	if (!t_s->precision && !num)
 		len = 0;
-	if (t_s->width >= len + sign && t_s->width >= t_s->precision)
+	if (t_s->width >= len + sign && t_s->width >= t_s->precision + sign)
 		t_s->length = (unsigned int) t_s->width;
-	else if (t_s->precision >= t_s->width && t_s->precision >= len + sign)
+	else if (t_s->precision + sign >= t_s->width && t_s->precision >= len)
 		t_s->length = (unsigned int) t_s->precision + sign;
 	else
 		t_s->length = len + sign;
