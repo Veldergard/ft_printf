@@ -6,11 +6,9 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:44:57 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/24 15:32:18 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 20:01:31 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#																				include <stdio.h>
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H

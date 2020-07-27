@@ -6,19 +6,9 @@
 /*   By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 18:28:58 by olaurine          #+#    #+#             */
-/*   Updated: 2020/07/26 21:47:08 by olaurine         ###   ########.fr       */
+/*   Updated: 2020/07/27 20:01:21 by olaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-malloc
-free
-write
-va_start
-va_arg
-va_copy
-va_end
-*/
 
 #include "ft_printf.h"
 

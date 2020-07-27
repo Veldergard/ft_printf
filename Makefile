@@ -6,7 +6,7 @@
 #    By: olaurine <olaurine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 18:22:58 by olaurine          #+#    #+#              #
-#    Updated: 2020/07/24 21:03:35 by olaurine         ###   ########.fr        #
+#    Updated: 2020/07/27 20:01:59 by olaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,6 @@ all: libft/libft.a $(NAME)
 
 libft/libft.a:
 	make all -C libft
-
-test: $(OBJ)
-	$(CC) -I includes -I libft -g main.c libftprintf.a -o test
 
 $(NAME): $(OBJ)
 	@[ -f $@ ] || cp libft/libft.a $(NAME)
