@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
+# include "libft/libft.h"
 # define FLG_NONE  0b00000000
 # define FLG_MINUS 0b00000001
 # define FLG_PLUS  0b00000010
